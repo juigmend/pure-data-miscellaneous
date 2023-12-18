@@ -1,0 +1,319 @@
+Visuaural v0.1.5
+
+Tested with:
+- Puredata Extended 0.42.5
+- Macintosh OS 10.11.6
+- Quicktime Player 10.4
+
+November, 2017
+
+===================================================================
+
+Visuaural is a software to perform several procedures for
+experimental research in music psychology and related fields.
+It runs on Puredata Extended.
+
+Once opened, the steps displayed in the user interface should be 
+followed.
+
+Visuaural will perform a procedure as stated in a "program", which
+should be written in a plain text file. The commands and usage to 
+build a Visuaural program appear below.
+
+Visuaural is a by-product of my master’s and doctoral degrees’ research at the 
+University of Jyväskylä. 
+
+Visuaural v0.1.5 is copyrighted, free to use and free to distribute under
+the GNU General Purpose License version 2.
+
+-------------------------------------------------------------------
+Copyright 2013-2017 Juan Ignacio Mendoza 
+-------------------------------------------------------------------
+
+Program Format
+--------------
+
+1 [first command] [parameter];
+2 [second command] [parameter];
+3 [third command] [parameter];
+.
+.
+.
+N [ending command] [parameter];
+
+-------------------------------------------------------------------
+
+Program Commands
+----------------
+
+prog_ready [name];
+	Sets the program to be ready to start. 
+	Displays name, date and participant number.
+
+a_repinst [audiofilename.wav];
+	Plays back a wav audio file. 
+	Waits 5 seconds for wiimote button A or space bar to playback the file again.
+
+a_inst_nxt [audiofilename.wav];
+	Plays back a wav audio file.
+	Waits wiimote button A or space bar to advance to next step.
+
+a_simpleplay [audiofilename.wav];
+	Plays back a wav audio file.
+	Waits 3 seconds to advance to next step.
+
+a_randomplay [list.txt];
+	Plays back a wav audio file randomly chosen from a list containing audio files names (with extensions). The same list can be used several times and a_randomplay will play the files in the list without repeating unless all the files have been played. If another list is used in between, then the shuffle property will be reset (i.e. a file previously played might be played again)
+	In the list each line should contain only one file name with a semicolon at the end of the line. The last (bottom) line does not need to have a semicolon.
+	After each playback it will output a .rpl text file containing the name of the audio file played.
+	Waits 3 seconds to advance to next step.
+
+a_restartopt [audiofilename.wav];
+	Plays back a wav audio file.
+	Waits 5 seconds for wiimote button A or space bar to restart the program.
+
+a_datacap_rt_nom [audiofilename.wav];
+	Plays back a wav audio file.
+	Records nominal response (100 or 0, wiimote button A or space bar) as the audio file plays.
+	Waits 3 seconds to advance to the next step.
+
+v_datacap_rt_nom_GEM [audiofilename.wav videofilename.mov];
+	Plays back a wav audio file and a mov video file simultaneously.
+	Records nominal response (100 or 0, wiimote button A or space bar) as the audio and video files play.
+	Waits 3 seconds to advance to next step.
+	This command uses the GEM video machine. Some video formats might not play smoothly.
+
+av_datacap_marker_QT [parameter];
+	Plays back a video file and records the time when wiimote button A or space bar is depressed as the video plays. The output is an unformatted text file with ‘mrk’ extension. Each line in this file is the video elapsed time (in seconds) when the space bar or button was depressed.
+	This command uses Quicktime Player and Applescript, therefore will only work in a computer running Mac OS. After the command is executed it waits 3 seconds to advance to the next step. Quicktime Player has to be first activated (see parameters below). Then any number of files can be opened and played. Quicktime Player can be deactivated afterwards. It will be automatically deactivated when the VA program ends or when “click to restart from (3)” is depressed.
+	This command might not work properly if there is a firewall running on the computer. Also Visuaural’s audio level setting will not affect the movie’s audio level.
+	
+	Parameters:
+
+	on
+	Activates Quicktime Player.
+
+	[mediafilename.xxx]
+	Media (audio, video or audio with video) file name.
+	The extension depends on the codecs installed.
+
+	random
+	Activates random mode.
+
+	default
+	Deactivates random mode. This is the default state when VA is opened.
+		
+	[list.txt]
+	When random mode is active, it will play back a video file randomly chosen 		from a list. It has the same behaviour as a_randomplay, but it doesn’t save a 	text file with the name of the loaded video file.
+	
+	off
+	De-activates Quicktime Player.
+
+a_datacap_rt_wii_y [audiofilename.wav];
+	Plays back a wav audio file.
+	Records continuous response (-100 to 100 at 10Hz, wiimote pitch) as the audio file plays.
+	Waits 3 seconds to advance to next step.
+
+a_rec_qstn [audiofilename.wav];
+	Plays back a wav audio file.
+	Records audio to a .wav file.
+	Waits for wiimote button A or space bar to advance to next step.
+
+a_datacap_qstn [audiofilename.wav];
+	Plays back a wav audio file.
+	Records one of the preset wiimote button or keyboard keys and advances to next step.
+	Outputs a plain text file with extension .qst
+
+v_disptxt [parameter];
+	Displays text on a black background full screen without mouse cursor.
+
+	Parameters:
+
+	on
+	Displays a black full screen.
+
+	off
+	Close the black full screen.
+
+	
+	[textfilename.txt]
+	Will display the content of a v_disptxt formatted text file.
+
+	v_disptxt textfilename.txt format:
+		[font size];
+		[colour];
+		[text line 1];
+		[text line 2];
+		...
+		[text line N];
+
+	font size range: 1 - 100?
+	colours: r y g b p w
+
+v_disptxt_count [parameter];
+	Displays a counter on a black background full screen without mouse cursor.
+
+	Parameters:
+
+	[textfilename.txt]
+	Will set the parameters of the counter.
+
+	v_disptxt_count textfilename.txt format:
+		[font size];
+		[colour];
+		[text];
+		[start number];
+		[end number];
+
+	init
+	Sets counter to start number.
+
+	show
+	Displays the counter and adds one. First display will be start number.
+
+	font size and colours are the same as v_disptxt
+	Screen needs to be turned off with "v_disptxt off"
+
+wait [seconds];
+	Waits a number of seconds and advances to next step.
+
+v_datacap_stroop [textfilename.txt];
+	Performs a Stroop test randomizing words and colours. 
+	Outputs a plain text file with extension .str containing a list wuith the following data cycles: numbers for displayed colour, displayed word, answered colour and response time in milliseconds.
+
+	v_datacap_stroop textfilename.txt format:
+	[font size];
+	[colours to use];
+	[word 1];
+	[word 2];
+	...
+	[word N];
+	
+	font size range: 1 - 100?
+	colours to use: r y g b p w
+
+v_txt_qst [textfilename.txt];
+	Displays a questionnaire that can have text, likert scales, nominal checkboxes and free text entries. It can also be used to display simple text.
+	Outputs a plain text file with extension .qst.
+
+	v_txt_qst textfilename.txt format:
+
+	q_fontsize;
+	[font size];
+
+	q_instetxt;
+	[text to display];
+
+	q_emptyline;
+
+	q_likert;
+	[lowest_number highest_number (displays a Likert scale)]
+
+	q_nominal;
+	[label_1 label_2];
+
+	q_inputext;
+	[size of the text input box];
+
+	q_img;
+	[horizontal_position image.gif (displays a .gif image)]
+
+	q_linefreeze;
+	[on or off, default is off]
+
+	q_contbutton;
+	[text to display (continues to next step)];
+	
+	q_flushbutton;
+	[text to display (flushes questionnaire and continues only if all questions have been responded, 		otherwise displays a warning message)];
+
+	q_contaspace;
+	(no parameter, enables wiimote button A and space bar to advance to next step, default is disabled)
+
+	Note: likert output is natural numbers, independent of the 	displayed range.
+
+prog_end [parameters];
+	Ends the current program.
+	parameters:
+		end: ends program
+		restart: Wait 5 seconds and restart program from stage 3 
+			("input number of participant")
+
+-------------------------------------------------------------------
+Preset Keys
+-----------
+
+Notes: 
+- Preset keys are valid for a_datacap_qstn. 
+- v_txt_qst accepts all keys and numbers.
+- v_datacap_stroop has preassigned keys for colours.
+- wiimote A or space bar will record 1 or 0.
+- Tested on Apple Macintosh operating system 10.8
+
+code: wii//keyboard1/keyboard2
+
+(100,0): A/spacebar
+1: -//1
+2: home//2
+3: +//3
+4: 1//y/Y
+5: 2//n/N
+6: a/A
+7: s/S
+8: d/D
+9: j/J
+10: k/K
+11: l/L
+
+-------------------------------------------------------------------
+Stroop Test Colours Codes and Keys
+----------------------------------
+
+code: key = colour
+
+1: A = red
+2: S = yellow
+3: D = green
+4: J = blue
+5: K = purple
+6: L = white
+
+-------------------------------------------------------------------
+
+Files Handling
+----------------
+
+All the files required and produced by a Visuaural program should
+be in the same folder where the program is (meaning the Visuaural
+procedure program as described in this document, not Visuaural itself).
+
+===================================================================
+Version log
+-----------
+
+0.1.5
+- av_datacap_marker_QT possibility to play files in random order from a list
+
+0.1.4
+- Cosmetic improvements to the GUI
+- av_datacap_marker_QT command added
+- v_datacap_rt_nom_GEM command added
+
+0.1.3
+- v_txt_qst q_flushbutton now flushes questionnaire and continues only if all questions have been responded.
+
+0.1.2
+- a_simpleplay has replaced a_play
+- a_randomplay command added
+- Data capture rate option has been added to the set-adjust-test window. Available rates are 4 Hz, 10 Hz and 100 Hz.
+- q_endbutton removed from v_txt_qst
+- q_nominal, q_img, q_linefreeze, q_contbutton, q_flushbutton and q_contaspace added to v_txt_qst
+- parameter "on" added to v_disptxt
+- v_disptxt_count command added
+
+0.1.1
+- a_datacap_rt_nom now records 100 or 0. Previously was 1 or 0.
+- a_datacap_rt_wii_y now continually records wii pitch position. Previously recorded zeros when wii was not moving in pitch direction.
+
+
+
