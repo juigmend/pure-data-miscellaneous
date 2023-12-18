@@ -1,0 +1,74 @@
+Audiofile Rating v0.1.2
+
+Tested with:
+- Puredata Extended 0.42.5
+- Macintosh OS 10.11.6
+
+March, 2017
+
+===================================================================
+
+“Audiofile Rating” is a software to rate audio stimuli with a graphical 
+user interface.
+
+Once opened, the steps displayed in the user interface should be 
+followed. It should be intuitive to use.
+Details about usage are given below.
+ 
+Audiofile Rating is copyrighted, free to use and free to distribute under
+the GNU General Purpose License version 2.
+
+-------------------------------------------------------------------
+Copyright 2017 Juan Ignacio Mendoza 
+-------------------------------------------------------------------
+
+Usage
+------
+
+The playlist is an unformatted text file that contains the names of 
+the audiofiles to be played, in the order to be played, each in one 
+line. The audiofiles should be formatted as “wav”. Audiofile Rating
+will not play mp3 or aiff files, for example.
+
+The playlist and the wav files should be in the same directory or folder 
+than the Audiofile_Rating .app or .pd file.
+
+After a participant has finished rating all the audiofiles, a file
+will be produced with the number of the participant as it was input in
+the main window. The name of this file should look like this: 
+p1.txt for participant 1; p2.txt for participant 2, etc.
+The participants’ responses files will be saved in the same directory 
+or folder where the playlist is.
+
+Mind that if in the main window a participant number that already has 
+been saved is input, then the current file bearing that number will be 
+overwritten without warning and the older file will be lost forever.
+To avoid losing data is better to manually backup the produced files 
+in a different directory or folder after each data collection session.
+
+Also mind that the path (the full name of the directory or directory 
+and enclosing directories or folders) where the files are, should not
+contain spaces.
+
+The rest should be evident.
+
+===================================================================
+Version log
+-----------
+
+0.1.2
+- Highlight in blinking red the frame of the load playlist button or 
+  the participant number input window, when they have not been input.
+- Participant’s GUI opens automatically after playlist is loaded and
+  participant number input.
+- Path specification fixed.
+- Rating range fixed to 0-99.
+- Not possible to advance to next audiofile 
+  unless current audiofile has been rated.
+- Patching organised.
+
+0.1.1
+hello world
+
+
+

@@ -1,0 +1,40 @@
+Record_Wii+Audio v0.1.3
+
+Tested on:
+- Puredata Extended 0.42.5
+- Macintosh OS 10.4.11
+
+September 5, 2015
+
+===================================================================
+
+
+Record_Wii+Audio records wiimote accelerometer and audio. It uses the same programming style as in Visuaural. 
+
+Currently supports one of five possible vectors from accelerometer: x, y, z, roll and pitch. 
+
+Dependencies: Pure Data, an OSC data stream (e.g. Darwiinremote sending data from Wiimote)
+
+Record_Wii+Audio is a by-product of my doctoral dissertation currently titled "Mimetical Relationships between Musical Structure and Bodily Mocvement: Measurement and Application", at the University of Jy�skyl� in Finland. 
+
+Record_Wii+Audio is copyrighted, free to use and free to distribute under
+the GNU license version 2.
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+===================================================================
+Version log
+-----------
+
+0.1.1
+hello world
+
+0.1.2
+many changes
+
+0.1.3
+Previous version did not work properly. This one seems to be OK.
+However, the user should be aware that if after a recording the participant/dataset number is not changed, the next recording will be overwritten without warning.
+
+-------------------------------------------------------------------
+Copyright 2015 Juan Ignacio Mendoza 

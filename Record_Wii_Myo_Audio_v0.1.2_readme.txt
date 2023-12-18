@@ -1,0 +1,61 @@
+Record_Wii_Myo_Audio
+
+===================================================================
+Information
+------------
+
+- Version: 0.1.2
+
+- Dependencies: Puredata Extended, DarwiinremoteOSC, Myo Connect, DaemonMYO.
+
+- Tested with:
+     - Puredata Extended 0.42.5
+     - Macintosh OS 10.11.6
+     - Macintosh OS 10.10.5
+     - DarwiinremoteOSC 0.6
+     - Myo Connect 1.0.1
+
+- Date of release: September, 2016
+
+- Authorship and license:
+     Record_Wii_Myo_Audio is a by-product of the author�s doctoral dissertation currently titled "Mimetical Relationships between Musical Structure and Bodily Mocvement: Measurement and Application", at the University of Jy�skyl� in Finland. 
+     Record_Wii_Myo_Audio is copyrighted by its author: Juan Ignacio Mendoza Garay. It is provided with no warranty. It is free to use and free to distribute under the GNU-GPL license version 2. DaemonMyo and Darwiinremote are third-party free software.
+
+-------------------------------------------------------------------
+Instructions
+------------
+
+- Overview:
+     Record_Wii_Myo_Audio records Wiimote, Myo and Audio data.
+
+- Getting started:
+     Install Puredata Extended on your computer. Prefer the software versions which have been used for testing (see above). It might not work with other software. Run Record_Wii_Myo_Audio and follow the on-screen instructions. It should be  intuitive to use.
+     To get data from a Wii remote (Wiimote) run DarwiinremoteOSC and follow the instructions.
+     To get data from a Myo armband the Myo Connect software should be installed and the myo.framework should be copied into ~/Library/Frameworks. If the Frameworks folder doesn�t exist you need to create it. Then the DaemonMYO script should be executed, just by double clicking on it.
+ 
+-------------------------------------------------------------------
+Observations
+------------
+
+- Setting path to save files:
+     When clicking the blue button a new window will appear. At the bottom of this window there is a light-blue button to set the path. Once this button is clicked a system window should appear, titled �Save�. In this window a folder should be selected, where all the files recorded in the current session will be saved. There is no need to put anything in the field �save as�. If anything is written in that field, it will be ignored.
+
+- System audio channels:
+     Before recording audio it is convenient to check that the proper input device and amount of channels are set in the menu PD-extended / Preferences / Audio Settings.
+
+- Wii and Myo data files:
+     The .wii and .myo data files have headers of two lines. The first line is the sampling frequency, while the second line indicates the data types in each line. Actual data starts at the third line.
+
+
+===================================================================
+Version log
+-----------
+
+0.1.2
+Many changes, mostly functionality additions.
+
+0.1.1
+hello world
+
+-------------------------------------------------------------------
+Copyright 2016 Juan Ignacio Mendoza 
