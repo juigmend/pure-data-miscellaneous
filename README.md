@@ -4,7 +4,7 @@
 
 Miscellaneous <A HREF="http://puredata.info/">Pure Data</A> patches.
 
-<img src="https://drive.google.com/file/d/0B_QXQFz5SaYzdVZjY3dJZFRLLW8/view?usp=sharing&resourcekey=0-rsovO3YFR9_W8Fplpn7e9A" width="280" height="270">
+<video src="https://drive.google.com/file/d/0B_QXQFz5SaYzdVZjY3dJZFRLLW8/view?usp=sharing&resourcekey=0-rsovO3YFR9_W8Fplpn7e9A" width="280" height="270">
 
 <A HREF="Instrument_Aaltoja_WORK.pd">Aaltoja - Pd patch</A>
 
